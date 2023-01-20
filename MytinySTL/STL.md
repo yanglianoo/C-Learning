@@ -143,7 +143,7 @@ int main()
 }
 ```
 
-**关于宏的两点：**
+**关于宏的几点：**
 
 1. 特殊符号 `#` 和 `##`
 
@@ -161,3 +161,71 @@ TYPE1(int, c); // int 　name_int_type; (因为##号将后面分为 name_ 、typ
 TYPE2(int, d); // int 　d_int_type;    (因为##号将后面分为 name、_、type 、_type四组，替换后强制连接)
 ```
 
+ 2. `#define  .....  do{   }while(0)`
+
+    由于宏是直接拼接，当出现如下情况时，就会出现逻辑错误：
+
+```c++
+  #define  print  print1();printf(2)
+  if(0)
+  	print
+  else
+  	return 0;
+//此时，由于if逻辑判断后未加括号，所以上述代码会被替换为
+  if(0)
+  	print1();
+	print2();
+  else
+  	return 0;
+//此时就会出现错误，加入do{ }while(0)后就能避免出现上述的错误
+```
+
+​	3.巧妙利用宏的特性：文本替换拼接
+
+```c++
+void TESTCASE_NAME(testcase_name)::Run()
+
+/*
+Run()后边没有写实现，是为了用宏定义将测试用例放入到 Run 的实现里，例如：
+TEST(copy_test)
+{
+EXPECT_EQ(3, Add(1, 2));
+EXPECT_EQ(2, Add(1, 1));
+}
+上述代码将 { EXPECT_EQ(3, Add(1, 2)); EXPECT_EQ(2, Add(1, 1)); } 接到 Run() 的后面
+*/
+```
+
+​	作者在写`Run`这个成员函数时，并没有写实现，这是因为此时的成员函数被定义为一个宏，所以可以不用加`{ }`，在调用的时候，使用如上的方式，即在后面加`{ ......Run函数实现 }`，直接拼接在一起，很是巧妙。
+
+### Test文件夹
+
+- **algorithm_performance_test.h**
+
+测试了排序算法和二分查找算法，对比了STL中提供的`sort`和`binary_search`。发现代码`bug`，在二分查找测试时没有进行排序，代码如下
+
+```c++
+#define FUN_TEST2(mode, fun, count) do {                       \
+    std::string fun_name = #fun;                               \
+    srand((int)time(0));                                       \
+    char buf[10];                                              \
+    clock_t start, end;                                        \
+    int *arr = new int[count];                                 \
+    for(size_t i = 0; i < count; ++i)  *(arr + i) = rand();    \                                                                                   
+    start = clock();                                           \
+    for(size_t i = 0; i < count; ++i)                          \
+        bool a=mode::fun(arr, arr + count, rand());            \ //出现错误的地方，没有对数组进行排序而直接二分查找
+    end = clock();                                             \
+    int n = static_cast<int>(static_cast<double>(end - start)  \
+        / CLOCKS_PER_SEC * 1000);                              \
+    std::snprintf(buf, sizeof(buf), "%d", n);                  \
+    std::string t = buf;                                       \
+    t += "ms   |";                                             \
+    std::cout << std::setw(WIDE) << t;                         \
+    delete []arr;                                              \
+} while(0)
+```
+
+- vector_test.h
+
+测试了`vector`容器中实现的各个成员函数，无特殊注意事项，比较简单。
