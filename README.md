@@ -45,18 +45,27 @@ Git学习文档：[添加远程库 - 廖雪峰的官方网站 (liaoxuefeng.com)]
  - [x] algorithm.h
  - [x] astring.h
  - [ ] construct.h
- - [ ] util.h  这个文件包含一些通用工具，包括 move, forward, swap 等函数，以及 pair 等 
- - [x] type_traits.h   作者未作具体实现
+ - [x] util.h   这个文件包含一些通用工具，包括 `move, forward, swap` 等函数，以及 `pair` 等 
+ - [x] type_traits.h   作者未做实现，使用的是标准库里的`type_traits`
 
-## 项目二 C++ 11/14/17/20新特性 .....待续
+## C++ 11/14/17/20新特性 .....待续
 
 ### C++11
+
+- `NULL`,`nullptr`
+- `noexcept`
 
 ### C++14
 
 ### C++17
 
 ### C++20
+
+## 零散知识点
+
+- `typedef` 和 `typename`:
+
+  >  `typedef` 用来定义别名，`typename`用来告诉编译器后面的东西为一个类型即`type`
 
 
 

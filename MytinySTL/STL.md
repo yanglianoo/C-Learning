@@ -226,6 +226,25 @@ EXPECT_EQ(2, Add(1, 1));
 } while(0)
 ```
 
-- vector_test.h
+- 其余测试文件，大多是调用不同容器的构造函数，对容器的提供的接口进行测试。
 
-测试了`vector`容器中实现的各个成员函数，无特殊注意事项，比较简单。
+## MytinySTL
+
+### `util.h`
+
+这个文件包含一些通用工具，包括 `move, forward, swap` 等函数，以及 `pair` 等
+
+- 数组的引用
+
+  ```c++
+  //数组的引用
+  template <class Tp, size_t N>
+  void swap(Tp(&a)[N], Tp(&b)[N]) 
+  {
+    mystl::swap_range(a, a + N, b);
+  }
+  //形参中的(&a) 代表数组a的引用，[N],代表数组的大小,要指定数组大小，如果没有后面的数组大小，天知道是变量还是数组
+  ```
+
+  
+
