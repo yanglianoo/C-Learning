@@ -39,9 +39,14 @@ Git学习文档：[添加远程库 - 廖雪峰的官方网站 (liaoxuefeng.com)]
 
 **MyTinySTL**   //STL实现文件夹
 
- - [x] algo.h
- - [x] allocator.h
- - [x] deque.h 
+ - [ ] algo.h
+ - [ ] allocator.h
+ - [ ] deque.h 
+ - [x] algorithm.h
+ - [x] astring.h
+ - [ ] construct.h
+ - [ ] util.h  这个文件包含一些通用工具，包括 move, forward, swap 等函数，以及 pair 等 
+ - [x] type_traits.h   作者未作具体实现
 
 ## 项目二 C++ 11/14/17/20新特性 .....待续
 
