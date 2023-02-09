@@ -55,8 +55,18 @@ Git学习文档：[添加远程库 - 廖雪峰的官方网站 (liaoxuefeng.com)]
 ### C++11
 
 - `NULL`,`nullptr`
+
+- `constexpr`
+
+  > `const`既可修饰只读变量，也可修饰常量
+  >
+  > `constexpr`只用于修饰常量表达式
+
 - `noexcept`
+
 - `&&`:右值引用
+
+- 转移和完美转发：`std::move，std::forward`
 
 ### C++14
 
