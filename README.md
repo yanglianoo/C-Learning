@@ -62,6 +62,9 @@ Git学习文档：[添加远程库 - 廖雪峰的官方网站 (liaoxuefeng.com)]
   >
   > `constexpr`只用于修饰常量表达式
 
+ - `auto`:用于自动推导已经被初始化后的变量的类型
+ - `decltype`:用于自动类型推导,语法为 `
+   int a=10; decltype(a) b = 100;`  主要应用于泛型编程中
 - `noexcept`
 
 - `&&`:右值引用
