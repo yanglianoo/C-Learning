@@ -11,7 +11,7 @@ Git学习文档：[添加远程库 - 廖雪峰的官方网站 (liaoxuefeng.com)]
 
 学习路线：STL `->`  C++11 `->`  设计模式
 
-## 项目一 MytinySTL
+## MytinySTL
 
 > 项目地址：[Alinshans/MyTinySTL: Achieve a tiny STL in C++11 (github.com)](https://github.com/Alinshans/MyTinySTL)
 >
@@ -48,7 +48,7 @@ Git学习文档：[添加远程库 - 廖雪峰的官方网站 (liaoxuefeng.com)]
  - [x] util.h   这个文件包含一些通用工具，包括 `move, forward, swap` 等函数，以及 `pair` 等 
  - [x] type_traits.h   作者未做实现，使用的是标准库里的`type_traits`
 
-## C++ 11/14/17/20新特性 .....待续
+## C++ 新特性
 
 ### C++11
 
@@ -82,6 +82,12 @@ Git学习文档：[添加远程库 - 廖雪峰的官方网站 (liaoxuefeng.com)]
 ### C++17
 
 ### C++20
+
+## 设计模式
+
+## 内存相关
+
+<img src="./static/img/memory.png" alt="在这里插入图片描述" style="zoom:80%;" />
 
 ## 零散知识点
 
@@ -123,8 +129,6 @@ Git学习文档：[添加远程库 - 廖雪峰的官方网站 (liaoxuefeng.com)]
   > 2、表示成员函数隐含传入的this指针为const指针，决定了在该成员函数中， 任意修改它所在的类的成员的操作都是不允许的（因为隐含了对this指针的const引用）；
   > 3、唯一的例外是对于mutable修饰的成员。加了const的成员函数可以被非const对象和const对象调用，但不加const的成员函数只能被非const对象调用
 
-## 内存相关
 
-<img src="README.assets/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5MTgzMDM0,size_16,color_FFFFFF,t_70.png" alt="在这里插入图片描述" style="zoom:80%;" />
 
-## 设计模式
+
