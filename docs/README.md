@@ -86,9 +86,7 @@ Git学习文档：[添加远程库 - 廖雪峰的官方网站 (liaoxuefeng.com)]
 ## 设计模式
 
 ## 内存相关
-
-<img src="./static/img/memory.png" alt="在这里插入图片描述" style="zoom:80%;" />
-
+ ![](./static/img/memory.png)
 ## 零散知识点
 
 - **`typedef` 和 `typename`:**

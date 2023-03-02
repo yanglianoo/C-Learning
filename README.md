@@ -125,6 +125,6 @@ Git学习文档：[添加远程库 - 廖雪峰的官方网站 (liaoxuefeng.com)]
 
 ## 内存相关
 
-<img src="./docs/static/img/memory.png" alt="在这里插入图片描述" style="zoom:80%;" />
+![](./docs/static/img/memory.png)
 
 ## 设计模式

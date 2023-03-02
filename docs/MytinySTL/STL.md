@@ -23,8 +23,7 @@ C++标准库以头文件的形式呈现：
 
 6. 适配器（Adapters）：修改接口。
 
-   <img src="../static/img/cpp-stl-6-components.png" alt="C++ STL 六大组件 – 人人都懂物联网" style="zoom:80%;" />
-
+![](../static/img/cpp-stl-6-components.png)
 ## 容器的分类与结构
 
 - 顺序容器：
@@ -40,7 +39,6 @@ C++标准库以头文件的形式呈现：
   - Unoedered Set/MultiSet
   - Unoedered Map/MultiMap
 
-<!-- <img src="../static/img/containers.png" alt="img" style="zoom:80%;" /> -->
  ![](../static/img/containers.png)
 ## 测试
 
