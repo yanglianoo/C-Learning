@@ -40,8 +40,8 @@ C++标准库以头文件的形式呈现：
   - Unoedered Set/MultiSet
   - Unoedered Map/MultiMap
 
-<img src="../static/img/containers.png" alt="img" style="zoom:80%;" />
-
+<!-- <img src="../static/img/containers.png" alt="img" style="zoom:80%;" /> -->
+ ![](../static/img/containers.png)
 ## 测试
 
 ### 主要文件结构
