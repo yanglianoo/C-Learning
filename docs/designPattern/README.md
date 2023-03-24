@@ -340,3 +340,123 @@ int main() {
 在简单工厂模式中，工厂类是完全掌控整个创建过程的，客户端只需要提供参数即可，无法控制对象的创建过程。而在工厂方法模式中，客户端通过选择相应的工厂来控制对象的创建过程，具有更高的灵活性。
 
 ## 2.3 抽象工厂模式
+```lua
+  +------------------+               +-------------------+
+  |   AbstractProductA|<--------------|ConcreteProductA1  |
+  +------------------+               +-------------------+
+              ^
+              |              +-------------------+
+              |--------------|ConcreteProductA2  |
+              |              +-------------------+
+  +------------------+               +-------------------+
+  |   AbstractProductB|<--------------|ConcreteProductB1  |
+  +------------------+               +-------------------+
+              ^
+              |              +-------------------+
+              |--------------|ConcreteProductB2  |
+              |              +-------------------+
+
+                 /|\
+                  |
+                  |
+  +------------------+         +-------------------+
+  |   AbstractFactory |         |  ConcreteFactory1  |
+  +------------------+         +-------------------+
+              ^                              ^
+              |                              |
+              |              +------------------+
+              |--------------| ConcreteFactory2 |
+                             +------------------+
+
+```
+在这个类图中，`AbstractProductA`和`AbstractProductB`是抽象产品类，`ConcreteProductA1`、`ConcreteProductA2`、`ConcreteProductB1`和`ConcreteProductB2`是具体产品类。`AbstractFactory`是抽象工厂类，`ConcreteFactory1`和`ConcreteFactory2`是具体工厂类。其中，`ConcreteFactory1`负责创建`ConcreteProductA1`和`ConcreteProductB1`，`ConcreteFactory2`负责创建`ConcreteProductA2`和`ConcreteProductB2`。所有的产品类都继承自抽象产品类，所有的工厂类都继承自抽象工厂类。
+```c++
+#include <iostream>
+#include <string>
+
+// Abstract product A
+class AbstractProductA {
+public:
+    virtual std::string getName() const = 0;
+};
+
+// Concrete product A1
+class ConcreteProductA1 : public AbstractProductA {
+public:
+    std::string getName() const override {
+        return "ConcreteProductA1";
+    }
+};
+
+// Concrete product A2
+class ConcreteProductA2 : public AbstractProductA {
+public:
+    std::string getName() const override {
+        return "ConcreteProductA2";
+    }
+};
+
+// Abstract product B
+class AbstractProductB {
+public:
+    virtual std::string getName() const = 0;
+};
+
+// Concrete product B1
+class ConcreteProductB1 : public AbstractProductB {
+public:
+    std::string getName() const override {
+        return "ConcreteProductB1";
+    }
+};
+
+// Concrete product B2
+class ConcreteProductB2 : public AbstractProductB {
+public:
+    std::string getName() const override {
+        return "ConcreteProductB2";
+    }
+};
+
+// Abstract factory
+class AbstractFactory {
+public:
+    virtual AbstractProductA* createProductA() = 0;
+    virtual AbstractProductB* createProductB() = 0;
+};
+
+// Concrete factory 1
+class ConcreteFactory1 : public AbstractFactory {
+public:
+    AbstractProductA* createProductA() override {
+        return new ConcreteProductA1();
+    }
+    AbstractProductB* createProductB() override {
+        return new ConcreteProductB1();
+    }
+};
+
+// Concrete factory 2
+class ConcreteFactory2 : public AbstractFactory {
+public:
+    AbstractProductA* createProductA() override {
+        return new ConcreteProductA2();
+    }
+    AbstractProductB* createProductB() override {
+        return new ConcreteProductB2();
+    }
+};
+
+int main() {
+    // Use factory 1 to create products
+    AbstractFactory* factory1 = new ConcreteFactory1();
+    AbstractProductA* productA1 = factory1->createProductA();
+    AbstractProductB* productB1 = factory1->createProductB();
+    std::cout << productA1->getName() << std::endl;  // Output: ConcreteProductA1
+    std::cout << productB1->getName() << std::endl;  // Output: ConcreteProductB1
+    delete factory1;
+    delete productA1;
+    delete productB1;
+    return 0;
+}
+```
