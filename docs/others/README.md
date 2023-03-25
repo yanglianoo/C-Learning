@@ -132,3 +132,47 @@
   ```
 
   `&student_say_hello` 实际上就是一个指向 `Student::student_say_hello` 函数的指针，它的类型是 `void (*)(Person*)`，即一个参数为 `Person*` 类型，返回值为 `void` 类型的函数指针。由于 `(*say_hello)(Person*)` 类型的函数指针和 `void (*)(Person*)` 类型的函数指针是兼容的，因此可以将 `&student_say_hello` 赋值给 `(*say_hello)(Person*)` 类型的函数指针。
+
+
+
+# 函数指针
+函数指针是指向函数的指针变量，可以将函数的地址作为值赋给该指针变量。在C语言中，函数指针的定义和用法如下：   
+1. 定义函数指针    
+
+    函数指针的定义格式为：
+    ```scss
+    返回类型 (*指针变量名)(参数列表);
+    ```
+    其中，指针变量名可以任意取名，返回类型为指向函数返回值的指针类型，参数列表包括函数参数类型和参数名称，如果没有参数可以写为 void。   
+
+    例如，定义一个指向返回 `int` 类型、参数为 `int` 和 `char*` 的函数指针：
+    ```c
+    int (*pFunc)(int, char*);
+    ```
+2. 使用函数指针      
+
+    函数指针可以像普通变量一样使用，可以将其作为参数传递给其他函数，或者将其赋值给其他函数的指针变量。
+
+    例如，定义一个函数 func，使用函数指针作为参数：
+    ```c
+    void func(int (*pFunc)(int, char*), int a, char* b) {
+    // 调用指针所指向的函数
+    int result = (*pFunc)(a, b);
+    printf("result = %d\n", result);
+    }
+    ```
+
+    然后定义一个函数 `func2`，传递指向另一个函数的指针作为参数：
+    ```c
+        int add(int a, char* b) {
+        printf("a = %d, b = %s\n", a, b);
+        return a + strlen(b);
+        }
+
+        void func2() {
+            int (*pFunc)(int, char*) = add;
+            func(pFunc, 1, "hello");
+        }
+    ```
+
+    在上面的代码中，函数 `func2` 中定义了一个指向 `add` 函数的指针 `pFunc`，然后将其作为参数传递给函数 `func`，`func` 再调用指针所指向的函数 `add`，输出结果为 `6`。
